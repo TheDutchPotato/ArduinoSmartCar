@@ -10,7 +10,7 @@ const int BASE_SPEED = 75;      // Base motor speed (0-255)
 const int MAX_ADJUSTMENT = 255;   // Maximum speed adjustment for turning
 
 // PID Constants
-const float KP = 40;  // Proportional gain
+const float KP = 35;  // Proportional gain
 const float KI = 0.55;  // Integral gain
 const float KD = 6;  // Derivative gain
 
