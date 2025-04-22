@@ -12,9 +12,8 @@ public:
   void DeviceDriverSet_Motor_Init(void);
 
   void DeviceDriverSet_Motor_Control(
-    boolean group_L, uint8_t speed_L,
-    boolean group_R, uint8_t speed_R
-  );
+      boolean group_L, uint8_t speed_L,
+      boolean group_R, uint8_t speed_R);
 
 private: /*motor pins*/
   #define PIN_Motor_PWM_L 5 //Left Motor group
@@ -49,13 +48,29 @@ private:
 //Line tracking sensor
 class DeviceDriverSet_LineTrack
 {
- public:
-   void DeviceDriverSet_Linetrack_Init(void);
+public:
+  void DeviceDriverSet_Linetrack_Init(void);
+  bool isOnLine(int sensorValue, int sensorMin, int sensorMax);
+  int getLinePosition(void);
+
+  // Line position constants
+#define FAR_LEFT -2    // Both left and middle sensors detect line
+#define LEFT -1        // Only left sensor detects line
+#define CENTER 0       // Only middle sensor detects line
+#define RIGHT 1        // Only right sensor detects line
+#define FAR_RIGHT 2    // Both right and middle sensors detect line
+#define LINE_LOST 99   // No sensors detect line
 
 private:
-  #define PIN_LineTrack_L A2  //Left sensor
-  #define PIN_LineTrack_M A1  //Middle sensor
-  #define PIN_LineTrack_R A0  //Right sensor
-};
+  void calibrateSensors();
 
+  // Calibration variables
+  int leftSensorMin = 1023, leftSensorMax = 0;
+  int middleSensorMin = 1023, middleSensorMax = 0;
+  int rightSensorMin = 1023, rightSensorMax = 0;
+
+  #define PIN_LineTrack_L A2  // Left sensor
+  #define PIN_LineTrack_M A1  // Middle sensor
+  #define PIN_LineTrack_R A0  // Right sensor
+};
 #endif
