@@ -6,13 +6,13 @@ DeviceDriverSet_LineTrack lineTracker;
 DeviceDriverSet_Ultrasonic ultrasonic;
 
 // Constants for line following
-const int BASE_SPEED = 75;      // Base motor speed (0-255)
-const int MAX_ADJUSTMENT = 255;   // Maximum speed adjustment for turning
+const int BASE_SPEED = 90;      // Base motor speed (0-255)
+const int MAX_ADJUSTMENT = 90;   // Maximum speed adjustment for turning
 
 // PID Constants
 const float KP = 35;  // Proportional gain
 const float KI = 0.55;  // Integral gain
-const float KD = 6;  // Derivative gain
+const float KD = 3.5;  // Derivative gain
 
 // PID Variables
 float lastError = 0;
@@ -68,22 +68,22 @@ float calculatePID(int linePosition) {
   float error;
   switch(linePosition) {
     case FAR_LEFT:
-      error = -4;
+      error = -3.8;
       break;
     case LEFT:
       error = -2;
       break;
     case CENTER:
-      error = 0.0;
+      error = 0;
       break;
     case RIGHT:
       error = 2;
       break;
     case FAR_RIGHT:
-      error = 4;
+      error = 3.8;
       break;
     default:
-      error = lastError; // Keep last error if line is lost
+      error = 0; // Keep last error if line is lost
       break;
   }
   
