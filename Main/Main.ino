@@ -83,7 +83,7 @@ float calculatePID(int linePosition) {
       error = 3.8;
       break;
     default:
-      error = 0; // Keep last error if line is lost
+      error = 0; 
       break;
   }
   
