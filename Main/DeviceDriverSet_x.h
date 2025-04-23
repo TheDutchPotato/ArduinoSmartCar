@@ -69,8 +69,8 @@ private:
   int middleSensorMin = 1023, middleSensorMax = 0;
   int rightSensorMin = 1023, rightSensorMax = 0;
 
-  #define PIN_LineTrack_L A2  // Left sensor
-  #define PIN_LineTrack_M A1  // Middle sensor
-  #define PIN_LineTrack_R A0  // Right sensor
+  #define PIN_LineTrack_L A2  // Left IR sensor
+  #define PIN_LineTrack_M A1  // Middle IR sensor
+  #define PIN_LineTrack_R A0  // Right IR sensor
 };
 #endif
